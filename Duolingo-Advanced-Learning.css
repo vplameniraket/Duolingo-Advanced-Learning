@@ -8,11 +8,16 @@
 }
 .newwrap .I1fg4,
 .newwrap+div .I1fg4 {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
 	margin-top: -10px;
 }
 .flexrow {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 }
 .secondary {
@@ -29,30 +34,36 @@
 	height: 30px;
 	border-radius: 50%;
 	text-align: center;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
 	padding-top: 5px;
 	font-weight: bold;
 	font-size: 17px;
 	left: -13px;
 	top: -14px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
 }
 .green+.badge {
 	background-color: #78c713;
 	color: #fff;
-	box-shadow: 0 0 0 2px #78c713 inset;
+	-webkit-box-shadow: 0 0 0 2px #78c713 inset;
+			box-shadow: 0 0 0 2px #78c713 inset;
 }
 .badge,
 textarea[disabled]+.badge {
 	background-color: #f0f0f0;
-	box-shadow: 0 0 0 2px #e5e5e5 inset;
+	-webkit-box-shadow: 0 0 0 2px #e5e5e5 inset;
+			box-shadow: 0 0 0 2px #e5e5e5 inset;
 	color: #c7c7c7;
 }
 .typewhatyouhear.success {
 	color: #5b980e;
 }
 .success+.badge {
-	box-shadow: 0 0 0 2px #e8e8e8 inset !important;
+	-webkit-box-shadow: 0 0 0 2px #e8e8e8 inset !important;
+			box-shadow: 0 0 0 2px #e8e8e8 inset !important;
 	background-color: #f6f6f6 !important;
 }
 
