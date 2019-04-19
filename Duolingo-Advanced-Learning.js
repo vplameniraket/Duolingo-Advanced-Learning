@@ -1,4 +1,3 @@
-alert('on');
 function setItm(prop, val) { localStorage.setItem(prop, val); }
 function getItm(prop) { return localStorage.getItem(prop); }
 
