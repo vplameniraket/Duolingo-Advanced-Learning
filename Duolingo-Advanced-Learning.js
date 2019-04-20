@@ -81,7 +81,8 @@ setInterval(function(){
 						textarea.focus();
 						newarea.disabled = true;
 						newwrap.classList.replace('fast','faster');
-						newarea.classList.add('secondary','success','pulse');
+						newwrap.classList.add('pulse');
+						newarea.classList.add('secondary','success');
 						var player = document.getElementById('successSound' + newid);
 						var keybuttons = parent.querySelectorAll('._1tSEs.oNqWF._3hso2._3skMI._1AM95');
 						if (!!parent.querySelectorAll('#newwrap' + newid + ' .I1fg4')[0]) {
