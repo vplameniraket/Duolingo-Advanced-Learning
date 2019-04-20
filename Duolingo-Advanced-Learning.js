@@ -4,14 +4,14 @@ function getItm(prop) { return localStorage.getItem(prop); }
 var keyboardDefined = false;
 if (getItm('keyboard')) keyboardDefined = true;
 
-var isFound = false,
+var textareaSel = textareaSel = '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])',
+	isFound = false,
 	newid,
 	newArea,
 	parent;
 setInterval(function(){
 	if (!isFound) {
-		var textareaSel = '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])',
-			textarea = document.querySelectorAll('._1eYrt._3T--_ ' + textareaSel + ', ._1ZoK4._3T--_ ' + textareaSel)[0];
+		var textarea = document.querySelectorAll('._1eYrt._3T--_ ' + textareaSel + ', ._1ZoK4._3T--_ ' + textareaSel)[0];
 		if (!!textarea) {
 			if (!isFound) {
 				isFound = true;
@@ -151,8 +151,6 @@ setInterval(function(){
 	}
 	else {
 		newArea = document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + '' + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + '' + textareaSel)[0];
-		console.log(newArea);
-		console.log('._1eYrt._3T--_ #textarea' + newid + '' + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + '' + textareaSel);
 		if (typeof newArea === 'undefined') {
 			isFound = false;
 		}
@@ -169,4 +167,4 @@ setInterval(function(){
 			setItm('keyboard', '');
 		}
 	}
-},1000);
+},25);
