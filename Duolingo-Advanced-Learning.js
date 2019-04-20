@@ -10,7 +10,8 @@ var isFound = false,
 	parent;
 setInterval(function(){
 	if (!isFound) {
-		var textarea = document.querySelectorAll('._1eYrt._3T--_ textarea[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck]), ._1ZoK4._3T--_  textarea[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])')[0];
+		var textareaSel = '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])',
+			textarea = document.querySelectorAll('._1eYrt._3T--_ ' + textareaSel + ', ._1ZoK4._3T--_  ' + textareaSel)[0];
 		if (!!textarea) {
 			if (!isFound) {
 				isFound = true;
@@ -30,13 +31,33 @@ setInterval(function(){
 				newarea.focus();
 				textarea.disabled = true;
 				textarea.classList.add('secondary');
-				var elements = parent.querySelectorAll('div[data-test="challenge-translate-prompt"]');
+
+				var elements = parent.querySelectorAll('div[data-test="challenge-translate-prompt"]'),
+					sentence = "";
 				elements = elements[elements.length - 1].querySelectorAll('[data-test="hint-token"]');
-				var sentence = "";
 				for (var i = 0; i < elements.length; i++) {
 					sentence += elements[i].innerText;
 				}
 				sentence = sentence.toLowerCase();
+
+				var nativeKeyboard = parent.querySelectorAll('#textarea' + newid + textareaSel + ' + .I1fg4')[0];
+				function toggleNativeKeyboard(state) {
+					if (!!nativeKeyboard) {
+						var nativeKeyboardButtons = parent.querySelectorAll('#textarea' + newid + textareaSel + ' + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
+						for (var i = 0; i < nativeKeyboardButtons.length; i++) {
+							nativeKeyboardButtons[i].disabled = state;
+						}
+					}
+				}
+				var keybuttons = parent.querySelectorAll('._1tSEs.oNqWF._3hso2._3skMI._1AM95');
+				function toggleNewKeyboard(state) {
+					if (!!parent.querySelectorAll('#newwrap' + newid + ' .I1fg4')[0]) {
+						for (var i = 0; i < keybuttons.length; i++) {
+							keybuttons[i].disabled = state;
+						}
+					}
+				}
+				toggleNativeKeyboard(true);
 				newarea.addEventListener("keydown", function (e) {
 					if (e.keyCode === 13) validate(e);
 					if (e.keyCode === 27) {
@@ -45,27 +66,10 @@ setInterval(function(){
 						textarea.focus();
 						newarea.disabled = true;
 						newarea.classList.add('secondary');
-						var keybuttons = parent.querySelectorAll('._1tSEs.oNqWF._3hso2._3skMI._1AM95');
-						if (!!parent.querySelectorAll('#newwrap' + newid + ' .I1fg4')[0]) {
-							for (var i = 0; i < keybuttons.length; i++) {
-								keybuttons[i].disabled = true;
-							}
-						}
-						if (!!nativeKeyboard) {
-							var nativeKeyboardButtons = parent.querySelectorAll('textarea[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck]) + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
-							for (var i = 0; i < nativeKeyboardButtons.length; i++) {
-								nativeKeyboardButtons[i].disabled = false;
-							}
-						}
+						toggleNewKeyboard(true);
+						toggleNativeKeyboard(false);
 					}
 				});
-				var nativeKeyboard = parent.querySelectorAll('textarea[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck]) + .I1fg4')[0];
-				if (!!nativeKeyboard) {
-					var nativeKeyboardButtons = parent.querySelectorAll('textarea[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck]) + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
-					for (var i = 0; i < nativeKeyboardButtons.length; i++) {
-						nativeKeyboardButtons[i].disabled = true;
-					}
-				}
 				function validate(e) {
 					function removeDotAndExcMarks (string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''); }
 					function normalize(string) { return string.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); }
@@ -84,18 +88,8 @@ setInterval(function(){
 						newwrap.classList.add('pulse');
 						newarea.classList.add('secondary','success');
 						var player = document.getElementById('successSound' + newid);
-						var keybuttons = parent.querySelectorAll('._1tSEs.oNqWF._3hso2._3skMI._1AM95');
-						if (!!parent.querySelectorAll('#newwrap' + newid + ' .I1fg4')[0]) {
-							for (var i = 0; i < keybuttons.length; i++) {
-								keybuttons[i].disabled = true;
-							}
-						}
-						if (!!nativeKeyboard) {
-							var nativeKeyboardButtons = parent.querySelectorAll('textarea[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck]) + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
-							for (var i = 0; i < nativeKeyboardButtons.length; i++) {
-								nativeKeyboardButtons[i].disabled = false;
-							}
-						}
+						toggleNewKeyboard(true);
+						toggleNativeKeyboard(false);
 						player.volume = 0.3;
 						player.play();
 					}
@@ -156,7 +150,7 @@ setInterval(function(){
 		}
 	}
 	else {
-		newArea = document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck]), ._1ZoK4._3T--_  #textarea' + newid + '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])')[0];
+		newArea = document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + textareaSel)[0];
 		if (typeof newArea === 'undefined') {
 			isFound = false;
 		}
