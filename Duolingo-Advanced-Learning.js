@@ -19,6 +19,8 @@ setInterval(function(){
 				var frames = document.querySelectorAll('._1eYrt._3T--_, ._1ZoK4._3T--_');
 				frames[frames.length - 1].id = 'frame' + newid;
 				parent = document.getElementById('frame' + newid);
+				var header = parent.querySelectorAll('h1._1Zqmf[data-test="challenge-header"] span')[0];
+				if (header.innerText == 'Write this in English') header.innerText == 'Write down and translate what you hear';
 				textarea.parentNode.insertAdjacentHTML('beforebegin', '<div id="newwrap' + newid + '" class="newwrap animated fast"><textarea data-test="challenge-translate-input" id="typewhatyouhear' + newid + '" class="_7q434 _1qCW5 _2fPEB _3_NyK _1Juqt typewhatyouhear" dir="ltr" placeholder="Type what you hear"></textarea><div class="badge">1</div><audio id="successSound' + newid + '"><source src="https://res.cloudinary.com/dn6n8yqqh/video/upload/v1555571470/DuolingoSuccessMP3.mp3" type="audio/mpeg"><source src="https://res.cloudinary.com/dn6n8yqqh/video/upload/v1555571639/DuolingoSuccessOGG.ogg" type="audio/ogg"><source src="https://res.cloudinary.com/dn6n8yqqh/video/upload/v1555571640/DuolingoSuccessWAV.wav" type="audio/wav"></audio></div>');
 				textarea.insertAdjacentHTML('afterend','<div class="badge">2</div>');
 				textarea.parentNode.classList.add('relative');
