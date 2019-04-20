@@ -4,7 +4,7 @@ function getItm(prop) { return localStorage.getItem(prop); }
 var keyboardDefined = false;
 if (getItm('keyboard')) keyboardDefined = true;
 
-var textareaSel = textareaSel = '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])',
+var textareaSel = '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])',
 	isFound = false,
 	newid,
 	newArea,
