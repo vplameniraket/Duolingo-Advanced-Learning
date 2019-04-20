@@ -39,6 +39,7 @@ setInterval(function(){
 					if (e.keyCode === 27) {
 						textarea.disabled = false;
 						textarea.classList.remove('secondary');
+						textarea.classList.add('green');
 						textarea.focus();
 						newarea.disabled = true;
 						newarea.className += ' secondary';
