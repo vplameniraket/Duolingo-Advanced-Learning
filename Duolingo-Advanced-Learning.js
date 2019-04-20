@@ -11,7 +11,7 @@ var isFound = false,
 setInterval(function(){
 	if (!isFound) {
 		var textareaSel = '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])',
-			textarea = document.querySelectorAll('._1eYrt._3T--_ ' + textareaSel + ', ._1ZoK4._3T--_  ' + textareaSel)[0];
+			textarea = document.querySelectorAll('._1eYrt._3T--_ ' + textareaSel + ', ._1ZoK4._3T--_ ' + textareaSel)[0];
 		if (!!textarea) {
 			if (!isFound) {
 				isFound = true;
@@ -151,6 +151,8 @@ setInterval(function(){
 	}
 	else {
 		newArea = document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + '' + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + '' + textareaSel)[0];
+		console.log(newArea);
+		console.log('._1eYrt._3T--_ #textarea' + newid + '' + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + '' + textareaSel);
 		if (typeof newArea === 'undefined') {
 			isFound = false;
 		}
@@ -167,4 +169,4 @@ setInterval(function(){
 			setItm('keyboard', '');
 		}
 	}
-},25);
+},1000);
