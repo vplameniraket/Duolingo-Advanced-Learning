@@ -69,11 +69,17 @@ setInterval(function(){
 				function validate(e) {
 					var text = e.target.value.replace(/[ ]$/g, '').replace(/^[ ]/g, '').replace(/[/:]/g, ''),
 						filteredSentence = sentence.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''),
+						noCommas = sentence.replace(/[,][ ]/g, ' ');
+						filteredNoCommas = noCommas.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''),
 						newwrap = document.getElementById('newwrap' + newid);
 					if (text.toLowerCase() == sentence.toLowerCase() ||
 						text.toLowerCase() == filteredSentence.toLowerCase() ||
 						text.toLowerCase() == sentence.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() ||
-						text.toLowerCase() == filteredSentence.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()) {
+						text.toLowerCase() == filteredSentence.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() ||
+						text.toLowerCase() == noCommas.toLowerCase() ||
+						text.toLowerCase() == filteredNoCommas.toLowerCase() ||
+						text.toLowerCase() == noCommas.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() ||
+						text.toLowerCase() == filteredNoCommas.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()) {
 						textarea.disabled = false;
 						textarea.classList.remove('secondary');
 						textarea.classList.add('green');
