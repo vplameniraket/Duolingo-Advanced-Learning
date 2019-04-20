@@ -36,15 +36,15 @@ setInterval(function(){
 				for (var i = 0; i < elements.length; i++) {
 					sentence += elements[i].innerText;
 				}
+				sentence = sentence.toLowerCase();
 				newarea.addEventListener("keydown", function (e) {
 					if (e.keyCode === 13) validate(e);
 					if (e.keyCode === 27) {
 						textarea.disabled = false;
-						textarea.classList.remove('secondary');
-						textarea.classList.add('green');
+						textarea.classList.replace('secondary', 'green');
 						textarea.focus();
 						newarea.disabled = true;
-						newarea.className += ' secondary';
+						newarea.classList.add('secondary');
 						var keybuttons = parent.querySelectorAll('._1tSEs.oNqWF._3hso2._3skMI._1AM95');
 						if (!!parent.querySelectorAll('#newwrap' + newid + ' .I1fg4')[0]) {
 							for (var i = 0; i < keybuttons.length; i++) {
@@ -67,27 +67,21 @@ setInterval(function(){
 					}
 				}
 				function validate(e) {
-					var text = e.target.value.replace(/[ ]$/g, '').replace(/^[ ]/g, '').replace(/[/:]/g, ''),
-						filteredSentence = sentence.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''),
+					function removeDotAndExcMarks (string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''); }
+					function normalize(string) { return string.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); }
+					var text = e.target.value.replace(/[ ]$/g, '').replace(/^[ ]/g, '').replace(/[/:]/g, '').toLowerCase(),
 						noCommas = sentence.replace(/[,][ ]/g, ' ');
-						filteredNoCommas = noCommas.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''),
+						filteredSentence = removeDotAndExcMarks(sentence),
+						filteredNoCommas = removeDotAndExcMarks(noCommas),
 						newwrap = document.getElementById('newwrap' + newid);
-					if (text.toLowerCase() == sentence.toLowerCase() ||
-						text.toLowerCase() == filteredSentence.toLowerCase() ||
-						text.toLowerCase() == sentence.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() ||
-						text.toLowerCase() == filteredSentence.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() ||
-						text.toLowerCase() == noCommas.toLowerCase() ||
-						text.toLowerCase() == filteredNoCommas.toLowerCase() ||
-						text.toLowerCase() == noCommas.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() ||
-						text.toLowerCase() == filteredNoCommas.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()) {
+					if ([sentence, filteredSentence, normalize(sentence), normalize(filteredSentence),
+						noCommas, filteredNoCommas, normalize(noCommas), normalize(filteredNoCommas)].includes(text)) {
+						textarea.classList.replace('secondary', 'green');
 						textarea.disabled = false;
-						textarea.classList.remove('secondary');
-						textarea.classList.add('green');
 						textarea.focus();
 						newarea.disabled = true;
-						newarea.className += ' secondary success';
-						newwrap.classList.remove('fast');
-						newwrap.className += ' faster pulse';
+						newwrap.classList.replace('fast','faster');
+						newarea.classList.add('secondary','success','pulse');
 						var player = document.getElementById('successSound' + newid);
 						var keybuttons = parent.querySelectorAll('._1tSEs.oNqWF._3hso2._3skMI._1AM95');
 						if (!!parent.querySelectorAll('#newwrap' + newid + ' .I1fg4')[0]) {
