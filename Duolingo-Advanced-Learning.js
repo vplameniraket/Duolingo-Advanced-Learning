@@ -7,7 +7,6 @@ if (getItm('keyboard')) keyboardDefined = true;
 var textareaSel = '[data-test="challenge-translate-input"]:not([autocorrect]):not([spellcheck])',
 	isFound = false,
 	newid,
-	newArea,
 	parent;
 setInterval(function(){
 	if (!isFound) {
@@ -131,40 +130,26 @@ setInterval(function(){
 					resetRegister();
 					enableButtons();
 					keybuttons[0].onclick = function(){
-						if (this.innerText == '↓') {
-							lowerCase();
-						}
-						else {
-							upperCase();
-						}
+						if (this.innerText == '↓') lowerCase();
+						else upperCase();
 					}
 					for (var i = 1; i < keybuttonslength; i++) {
 						keybuttons[i].onclick = function(){
-							var elem = document.getElementById('typewhatyouhear' + newid);
-							elem.value += this.innerText;
-							elem.focus();
+							newarea.value += this.innerText;
+							newarea.focus();
 						}
 					}
 				}
 			}
 		}
 	}
-	else {
-		newArea = document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + '' + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + '' + textareaSel)[0];
-		if (typeof newArea === 'undefined') {
-			isFound = false;
-		}
-	}
+	else if (typeof document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + '' + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + '' + textareaSel)[0] === 'undefined') isFound = false;
 	var targetLangInput = document.querySelectorAll('textarea[autocorrect][spellcheck]')[0];
 	if (!!targetLangInput){
 		var keyboard = document.querySelectorAll('textarea[autocorrect][spellcheck] + .I1fg4')[0];
 		if (!!keyboard) {
-			if (!keyboardDefined || keyboard.innerHTML !== getItm('keyboard')) {
-				setItm('keyboard',keyboard.innerHTML);
-			}
+			if (!keyboardDefined || keyboard.innerHTML !== getItm('keyboard')) setItm('keyboard',keyboard.innerHTML);
 		}
-		else {
-			setItm('keyboard', '');
-		}
+		else setItm('keyboard', '');
 	}
 },25);
