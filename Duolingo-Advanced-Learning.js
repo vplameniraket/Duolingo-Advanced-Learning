@@ -40,10 +40,10 @@ setInterval(function(){
 				}
 				sentence = sentence.toLowerCase();
 
-				var nativeKeyboard = parent.querySelectorAll('#textarea' + newid + textareaSel + ' + .I1fg4')[0];
+				var nativeKeyboard = parent.querySelectorAll('#textarea' + newid + '' + textareaSel + ' + .I1fg4')[0];
 				function toggleNativeKeyboard(state) {
 					if (!!nativeKeyboard) {
-						var nativeKeyboardButtons = parent.querySelectorAll('#textarea' + newid + textareaSel + ' + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
+						var nativeKeyboardButtons = parent.querySelectorAll('#textarea' + newid + '' + textareaSel + ' + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
 						for (var i = 0; i < nativeKeyboardButtons.length; i++) {
 							nativeKeyboardButtons[i].disabled = state;
 						}
@@ -150,7 +150,7 @@ setInterval(function(){
 		}
 	}
 	else {
-		newArea = document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + textareaSel)[0];
+		newArea = document.querySelectorAll('._1eYrt._3T--_ #textarea' + newid + '' + textareaSel + ', ._1ZoK4._3T--_  #textarea' + newid + '' + textareaSel)[0];
 		if (typeof newArea === 'undefined') {
 			isFound = false;
 		}
