@@ -77,7 +77,7 @@ setInterval(function(){
 				});
 				function validate(e) {
 					function removeDotAndExcMarks(string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''); }
-					function replaceNonLatin(string) { return string.replace(/[æ]/g, 'ae').replace(/[ø]/g, 'oe').replace(/[å]/g, 'aa').replace(/[ß]/g, 'ss').replace(/[œ]/g, 'oe').replace(/[ñ]/g, 'n\''); }
+					function replaceNonLatin(string) { return string.replace(/[æ]/g, 'ae').replace(/[ø]/g, 'oe').replace(/[å]/g, 'aa').replace(/[ß]/g, 'ss').replace(/[œ]/g, 'oe').replace(/[ñ]/g, 'n\'').replace(/[ǆ]/g, 'dzh'); }
 					function normalize(string) { return string.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); }
 					var text = e.target.value.replace(/[ ]$/g, '').replace(/^[ ]/g, '').replace(/[/:]/g, '').replace(/[ ][ ]/g, ' ').toLowerCase(),
 						noCommas = sentence.replace(/[,][ ]/g, ' '),
