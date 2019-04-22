@@ -77,11 +77,11 @@ setInterval(function(){
 					if (e.keyCode === 17) document.querySelectorAll('.c_gLl._2ESN4._2arQ0._3skMI._1AM95')[0].click();
 				});
 				function validate(e) {
-					function removeDotAndExcMarks(string) { return string.replace(/[ ][.?!。！？]$/g, '').replace(/[.?!。！？]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''); }
+					function removeDotAndExcMarks(string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, '').replace(/[。！？]$/g, ''); }
 					function replaceNonLatin(string) { return string.replace(/[æ]/g, 'ae').replace(/[ø]/g, 'oe').replace(/[å]/g, 'aa').replace(/[ß]/g, 'ss').replace(/[œ]/g, 'oe').replace(/[ñ]/g, 'n\'').replace(/[ǆ]/g, 'dzh'); }
 					function normalize(string) { return string.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); }
 					var text = e.target.value.replace(/[ ]$/g, '').replace(/^[ ]/g, '').replace(/[/:]/g, '').replace(/[ ][ ]/g, ' ').toLowerCase(),
-						noCommas = sentence.replace(/[,、][ ]/g, ' '),
+						noCommas = sentence.replace(/[,][ ]/g, ' ').replace(/[、]/g, ''),
 						filteredSentence = removeDotAndExcMarks(sentence),
 						filteredNoCommas = removeDotAndExcMarks(noCommas),
 						newwrap = document.getElementById('newwrap' + newid);
