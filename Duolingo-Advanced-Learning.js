@@ -76,15 +76,20 @@ setInterval(function(){
 					}
 				});
 				function validate(e) {
-					function removeDotAndExcMarks (string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''); }
+					function removeDotAndExcMarks(string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''); }
+					function replaceNonLatin(string) { return string.replace(/[æ]/g, 'ae').replace(/[å]/g, 'aa').replace(/[ß]/g, 'ss').replace(/[œ]/g, 'oe').replace(/[ñ]/g, 'n\''); }
 					function normalize(string) { return string.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); }
-					var text = e.target.value.replace(/[ ]$/g, '').replace(/^[ ]/g, '').replace(/[/:]/g, '').toLowerCase(),
-						noCommas = sentence.replace(/[,][ ]/g, ' ');
+					var text = e.target.value.replace(/[ ]$/g, '').replace(/^[ ]/g, '').replace(/[/:]/g, '').replace(/[ ][ ]/g, ' ').toLowerCase(),
+						noCommas = sentence.replace(/[,][ ]/g, ' '),
 						filteredSentence = removeDotAndExcMarks(sentence),
 						filteredNoCommas = removeDotAndExcMarks(noCommas),
 						newwrap = document.getElementById('newwrap' + newid);
-					if ([sentence, filteredSentence, normalize(sentence), normalize(filteredSentence),
-						noCommas, filteredNoCommas, normalize(noCommas), normalize(filteredNoCommas)].includes(text)) {
+					if ([sentence, filteredSentence,
+						replaceNonLatin(sentence), normalize(sentence), normalize(replaceNonLatin(sentence)),
+						replaceNonLatin(filteredSentence), normalize(filteredSentence), normalize(replaceNonLatin(filteredSentence)),
+						noCommas, filteredNoCommas,
+						replaceNonLatin(noCommas), normalize(noCommas), normalize(replaceNonLatin(noCommas)),
+						replaceNonLatin(filteredNoCommas), normalize(filteredNoCommas), normalize(replaceNonLatin(filteredNoCommas))].includes(text)) {
 						textarea.classList.replace('secondary', 'green');
 						textarea.disabled = false;
 						textarea.focus();
