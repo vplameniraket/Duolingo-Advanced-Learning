@@ -74,6 +74,7 @@ setInterval(function(){
 						toggleNewKeyboard(true);
 						toggleNativeKeyboard(false);
 					}
+					if (e.keyCode === 17) document.querySelectorAll('.c_gLl._2ESN4._2arQ0._3skMI._1AM95')[0].click();
 				});
 				function validate(e) {
 					function removeDotAndExcMarks(string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, ''); }
