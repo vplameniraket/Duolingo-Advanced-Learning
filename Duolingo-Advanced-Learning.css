@@ -172,3 +172,6 @@ textarea[disabled]+.badge {
 	-webkit-animation-duration: 500ms;
 	animation-duration: 500ms;
 }
+div[id*="frame"] .bPbf1 {
+    margin-top: -50px;
+}
