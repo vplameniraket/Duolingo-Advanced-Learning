@@ -37,10 +37,10 @@ setInterval(function(){
 				newarea.focus();
 
 
-				var elements = parent.querySelectorAll('div[data-test="challenge-translate-prompt"]'),
+				var elements = parent.querySelectorAll('[data-test="hint-token"]'),
 					sentence = "";
-				elements = elements[elements.length - 1].querySelectorAll('[data-test="hint-token"]');
-				for (var i = 0; i < elements.length; i++) sentence += elements[i].innerText.toLowerCase();
+				for (var i = 0; i < elements.length; i++) sentence += elements[i].innerText;
+				sentence = sentence.toLowerCase();
 
 				var nativeKeyboardButtons = parent.querySelectorAll('#textarea' + newid + ' + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
 				function toggleNativeKeyboard(state) {
