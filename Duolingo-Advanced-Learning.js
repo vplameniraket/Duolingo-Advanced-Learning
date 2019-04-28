@@ -39,7 +39,11 @@ setInterval(function(){
 
 				var elements = parent.querySelectorAll('[data-test="hint-token"]'),
 					sentence = "";
-				for (var i = 0; i < elements.length; i++) sentence += elements[i].innerText;
+				for (var i = 0; i < elements.length; i++) {
+					for (var j = 0; j < elements[i].childNodes.length; j++) {
+						if (elements[i].childNodes[j].nodeName == "#text") sentence += elements[i].childNodes[j].nodeValue;
+					}
+				}
 				sentence = sentence.toLowerCase();
 
 				var nativeKeyboardButtons = parent.querySelectorAll('#textarea' + newid + ' + .I1fg4 ._1tSEs.oNqWF._3hso2._3skMI._1AM95');
