@@ -85,6 +85,8 @@ setInterval(function(){
 						filteredSentence = removeDotAndExcMarks(sentence),
 						filteredNoCommas = removeDotAndExcMarks(noCommas),
 						newwrap = document.getElementById('newwrap' + newid);
+					console.log('sentence:' + sentence);
+					console.log('input:' + text);
 					if ([sentence, filteredSentence,
 						replaceNonLatin(sentence), normalize(sentence), normalize(replaceNonLatin(sentence)),
 						replaceNonLatin(filteredSentence), normalize(filteredSentence), normalize(replaceNonLatin(filteredSentence)),
