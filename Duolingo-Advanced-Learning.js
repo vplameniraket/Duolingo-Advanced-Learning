@@ -65,6 +65,7 @@ setInterval(function(){
 				}
 
 				toggleNativeKeyboard(true);
+				var sentElem = document.querySelectorAll('button + .oR3Zt')[0];
 				newarea.addEventListener("keydown", function (e) {
 					if (e.keyCode === 13) validate(e);
 					if (e.keyCode === 27) {
@@ -79,6 +80,10 @@ setInterval(function(){
 						toggleNativeKeyboard(false);
 					}
 					if (e.keyCode === 17) document.querySelectorAll('.c_gLl._2ESN4._2arQ0._3skMI._1AM95')[0].click();
+					if (e.keyCode === 9) sentElem.classList.add('reveal');
+				});
+				newarea.addEventListener("keyup", function (e) {
+					if (e.keyCode === 9) sentElem.classList.remove('reveal');
 				});
 				function validate(e) {
 					function removeDotAndExcMarks(string) { return string.replace(/[ ][.?!]$/g, '').replace(/[.?!]$/g, '').replace(/[¿]/g, '').replace(/[¡]/g, '').replace(/[。！？]$/g, ''); }
