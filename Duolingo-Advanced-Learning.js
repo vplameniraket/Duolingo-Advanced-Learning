@@ -81,6 +81,7 @@ setInterval(function(){
 					}
 					if (e.keyCode === 17) document.querySelectorAll('.c_gLl._2ESN4._2arQ0._3skMI._1AM95')[0].click();
 					if (e.keyCode === 9) {
+						e.preventDefault();
 						sentElem.classList.add('reveal');
 						return;
 					}
