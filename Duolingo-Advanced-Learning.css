@@ -1,4 +1,4 @@
-.flexrow._7q434, ._2MGCg {
+.flexrow ._7q434, ._2MGCg {
 	height: 100px;
 }
 .newwrap {
@@ -26,7 +26,7 @@
 }
 .relative {
 	position: relative;
-	max-width: calc(50% - 8px);
+	min-width: calc(50% - 8px);
 }
 .badge {
 	position: absolute;
