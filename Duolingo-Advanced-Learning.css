@@ -1,5 +1,5 @@
-._7q434 {
-	max-height: 100px;
+.flexrow._7q434, ._2MGCg {
+	height: 100px;
 }
 .newwrap {
 	margin-right: 15px;
@@ -26,6 +26,7 @@
 }
 .relative {
 	position: relative;
+	max-width: calc(50% - 8px);
 }
 .badge {
 	position: absolute;
@@ -171,7 +172,4 @@ textarea[disabled]+.badge {
 .animated.faster {
 	-webkit-animation-duration: 500ms;
 	animation-duration: 500ms;
-}
-div[id*="frame"] .bPbf1 {
-    margin-top: -50px;
 }
