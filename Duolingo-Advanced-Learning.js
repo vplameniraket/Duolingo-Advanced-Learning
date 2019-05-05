@@ -65,7 +65,7 @@ setInterval(function(){
 				}
 
 				toggleNativeKeyboard(true);
-				var sentElem = document.querySelectorAll('button + .oR3Zt')[0];
+				var sentElem = parent.querySelectorAll('button + .oR3Zt')[0];
 				newarea.addEventListener("keydown", function (e) {
 					if (e.keyCode === 13) validate(e);
 					if (e.keyCode === 27) {
